@@ -2,6 +2,18 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    signInWithRedirect,
+    GoogleAuthProvider,
+    onAuthStateChanged,
+    signOut,
+} from 'firebase/auth';
+
 import {
     getFirestore, 
     doc, 
@@ -27,6 +39,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore();
+export const auth = getAuth();
+
+const googleProvider = new GoogleAuthProvider();
+
+googleProvider.setCustomParameters({
+    prompt: "select_account"
+})
+
+export const signInWithGoogle = () => signInWithPopup(auth, googleProvider)
+
 
 //used to populate product db for 
 export const addCollectionAndDocuments = async(collectionKey, ObjectsToAdd)=>{
@@ -35,7 +57,6 @@ export const addCollectionAndDocuments = async(collectionKey, ObjectsToAdd)=>{
 
     ObjectsToAdd.forEach((object) => {
         const docRef = doc(collectionRef, object.title.toLowerCase());
-        console.log(`doc`, docRef);
         batch.set(docRef, object);
     });
 
@@ -54,4 +75,53 @@ export const getCollectionAndDocuments = async() =>{
         return acc;
     }, {})
     return categoryMap;
+}
+
+export const CreateAuthUserWithEmailAndPassword = async( email, password) => {
+    if(password && email ){
+        return await createUserWithEmailAndPassword(auth, email, password)
+    }
+}
+export const SignAuthUserWithEmailAndPassword = async (email, password) => {
+    if(password && email){
+        return await signInWithEmailAndPassword(auth, email, password)
+    }else{
+        console.log('email or password missing')
+    }
+    
+    
+}
+export const createUserDocumentFromAuth = async (userAuth) =>{
+    console.log(userAuth);
+    
+    const userRef = doc(db, 'users', userAuth.uid);
+    const userSnapshot = await getDoc(userRef);
+    console.log(userSnapshot)
+    if(!userSnapshot.exists()){
+        const{email} = userAuth;
+        const createdAt = new Date();
+        try{
+            await setDoc(userRef, {
+                email, 
+                createdAt,
+            })
+        }
+        catch(error){
+            console.log('error creating the user ', error);
+        }
+
+    }
+    return userRef
+}
+
+export const userAuthStateChangedListener = (callback) => {
+    onAuthStateChanged(auth, callback)
+}
+
+export const signOutUser = async() =>{
+    try{
+       await signOut(auth);
+    }catch(err){
+        console.log(err);
+    }
 }

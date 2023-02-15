@@ -5,27 +5,32 @@ export const categories = [
     {
         id: 1,
         title: 'Indoor Plants',
-        imageUrl: 'https://thumbs.dreamstime.com/b/tropical-leaves-foliage-plant-bush-floral-arrangement-nature-bac-backdrop-isolated-white-background-clipping-path-included-113573536.jpg',
+        imageUrl: 'https://images.pexels.com/photos/3125195/pexels-photo-3125195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        route: '/shop/indoorplants'
     },
     {
         id: 2,
         title: 'Outdoor Plants',
-        imageUrl: 'https://thumbs.dreamstime.com/b/tropical-leaves-foliage-plant-bush-floral-arrangement-nature-bac-backdrop-isolated-white-background-clipping-path-included-113573536.jpg',
+        imageUrl: 'https://images.pexels.com/photos/9413740/pexels-photo-9413740.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        route: '/shop/outdoorplants',
     },
     {
         id: 3,
         title: 'Flowers',
-        imageUrl: 'https://thumbs.dreamstime.com/b/tropical-leaves-foliage-plant-bush-floral-arrangement-nature-bac-backdrop-isolated-white-background-clipping-path-included-113573536.jpg',
+        imageUrl: 'https://images.pexels.com/photos/112396/pexels-photo-112396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        route: '/shop/flowers',
     },
     {
         id: 4,
         title: 'Seeds & Bulbs',
-        imageUrl: 'https://thumbs.dreamstime.com/b/tropical-leaves-foliage-plant-bush-floral-arrangement-nature-bac-backdrop-isolated-white-background-clipping-path-included-113573536.jpg',
+        imageUrl: 'https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        route: '/shop/seedsbulbs',
     },
     {
         id: 5,
-        title: 'Accessoires',
-        imageUrl: 'https://thumbs.dreamstime.com/b/tropical-leaves-foliage-plant-bush-floral-arrangement-nature-bac-backdrop-isolated-white-background-clipping-path-included-113573536.jpg',
+        title: 'Essentials',
+        imageUrl: 'https://images.pexels.com/photos/8989429/pexels-photo-8989429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        route: '/shop/essentials',
     }
   ];
 const CategoryMenu = () => {
@@ -33,7 +38,7 @@ const CategoryMenu = () => {
         <CategoryMenuContainer>
             {
                 categories.map((category) => (
-                    <CategoryItem id={category.id} category={category}/>
+                    <CategoryItem key={category.id} category={category}/>
                 ))
             }   
         </CategoryMenuContainer>

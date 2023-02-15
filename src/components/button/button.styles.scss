@@ -1,0 +1,17 @@
+button{
+    background-color: black;
+    cursor: pointer;
+    color: white;
+    opacity: 0.8;
+    font-size: 15px;
+    margin: 5px ;
+    height:40px;
+    width: 150px;
+
+    &:hover{
+        color: black;
+        background-color: white;
+        border: solid black 1px;
+        border-radius: 4%;
+    }
+}

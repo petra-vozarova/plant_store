@@ -1,0 +1,26 @@
+.category{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .category-title{
+        margin:20px auto;
+    }
+    .category-preview{
+        max-width: 900px;
+        min-width:300px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 20px;
+        row-gap: 50px;
+        margin:auto
+    }     
+}
+
+
+
+
+
+
+
+

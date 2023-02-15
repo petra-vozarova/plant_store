@@ -8,9 +8,6 @@ export const CategoriesContext = createContext({
     categoriesMap : {},
 });
 const data = STORE_DATA
-STORE_DATA.forEach((object)=>{
-    console.log(object.title)
-})
 
 export const CategoriesProvider = ({children}) =>{
     const [categoriesMap, setCategoriesMap] = useState({})
@@ -29,7 +26,7 @@ export const CategoriesProvider = ({children}) =>{
     }, [])
 
     const value = {categoriesMap};
-    console.log(`value ${Object.keys(value)}`)
+
     return(
         <CategoriesContext.Provider value={value}>{children}</CategoriesContext.Provider>
     )

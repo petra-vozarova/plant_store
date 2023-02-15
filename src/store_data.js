@@ -192,7 +192,7 @@ export const STORE_DATA = [
         ]
     },
     {
-        title: 'Essentials',
+        title: 'Accessoires',
         items: [
             {
                 id: 1,

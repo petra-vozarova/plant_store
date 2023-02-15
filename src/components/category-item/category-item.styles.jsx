@@ -19,11 +19,12 @@ export const BodyDirectory = styled.div`
   background-color: white;
   opacity: 0.7;
   position: absolute;
+  width:25%;
 
-  h2 {
+  h1 {
     font-weight: bold;
     margin: 0 6px 0;
-    font-size: 22px;
+    font-size: 20px;
     color: #4a4a4a;
     text-transform: uppercase;
   }

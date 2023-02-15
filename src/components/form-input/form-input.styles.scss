@@ -1,0 +1,38 @@
+@mixin shrinkLabel{
+    font-size: 12px;
+    top:-5px;
+
+}
+
+
+.input-container{
+    background-color: yellow;
+    border-bottom: black solid 1px;
+    position:relative;
+    margin-bottom: 10px;
+    max-width:400px;
+    
+    &:hover  {
+        label{
+            @include shrinkLabel();
+        }
+    }
+
+    label{
+        top: 5px;
+        left: 20px;
+        position: absolute;
+    }  
+    input{
+        width:100%;
+        border: none;
+        position: block;
+        padding:10px;
+        font-size: 15px;
+        } 
+    
+        .shrink{
+            @include shrinkLabel();
+        }
+
+}

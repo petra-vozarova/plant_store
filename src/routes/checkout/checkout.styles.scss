@@ -1,0 +1,40 @@
+.checkout-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    margin: 60px auto 0;
+
+    .checkout-header-container{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: solid black 1px;
+        .name-header{
+            width: 30%;
+        }
+        .description-header{
+            width: 25%;
+        }
+        .quantity-header{
+            width: 20%;
+        }
+        .price-header{
+            width: 15%;
+        }
+        .remove-header{
+            width: 10%;
+        }
+        p{
+            margin: 5px;
+        }
+
+    }
+
+    .total-container{
+        font-size: 30px;
+        margin-left: auto;
+        margin-top: 30px;
+    }
+}

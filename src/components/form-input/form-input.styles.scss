@@ -4,7 +4,6 @@
 
 }
 
-
 .input-container{
     background-color: yellow;
     border-bottom: black solid 1px;
@@ -12,7 +11,7 @@
     margin-bottom: 10px;
     max-width:400px;
     
-    &:hover  {
+    &:hover{
         label{
             @include shrinkLabel();
         }
@@ -23,6 +22,7 @@
         left: 20px;
         position: absolute;
     }  
+
     input{
         width:100%;
         border: none;
@@ -30,9 +30,8 @@
         padding:10px;
         font-size: 15px;
         } 
-    
-        .shrink{
-            @include shrinkLabel();
-        }
 
+    .shrink{
+        @include shrinkLabel();
+    }
 }

@@ -13,6 +13,7 @@
         object-fit: cover;
 
     }
+
     .cart-item-details-container{
         width:110px;
         display: flex;
@@ -20,11 +21,9 @@
         align-items: flex-start;
         height:80%;
         justify-content: flex-end;
-
         p{
             margin:2px;
             padding: 0;
         }
     }
-
 }

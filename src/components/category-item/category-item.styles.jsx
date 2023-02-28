@@ -19,7 +19,7 @@ export const BodyDirectory = styled.div`
   background-color: white;
   opacity: 0.7;
   position: absolute;
-  width:25%;
+  max-width:25%;
 
   h1 {
     font-weight: bold;
@@ -65,5 +65,4 @@ overflow: hidden;
   ${BodyDirectory} {
     opacity: 0.9;
   }
-
 `;

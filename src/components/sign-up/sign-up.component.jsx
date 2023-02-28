@@ -1,14 +1,17 @@
-import { useState } from "react"
+import { useState } from "react";
+
 import { CreateAuthUserWithEmailAndPassword, createUserDocumentFromAuth, signInWithGoogle } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
 import './sign-up.styles.scss';
+
 const defaultFormFields = {
     email: '',
     password: '',
     confirmPassword: '',
 };
+
 const SignUp = () =>{
     var labelClass;
     const [formFields, setFormFields] = useState(defaultFormFields);
@@ -17,38 +20,39 @@ const SignUp = () =>{
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
     }
+
     const handleChange = (event) => {
         const {name, value} = event.target;
-
         setFormFields({...formFields, [name]: value})
         labelClass = 'shrink'
-
     }
+
     const googleSignInHandler = async() => {
         await signInWithGoogle();
     }
+
     const submitHandler = async (event) => {
         event.preventDefault();
-        console.log('submitting')
         if(password == confirmPassword){
             try{
-                     const {user} = await CreateAuthUserWithEmailAndPassword(email, password)
-            await createUserDocumentFromAuth(user);      
+                const {user} = await CreateAuthUserWithEmailAndPassword(email, password)
+                await createUserDocumentFromAuth(user);      
             }catch(error){
                 if(error.code === 'auth/email-already-in-use'){
-                    alert('Email is already in use')
+                    alert('Email is already in use');
                 }
                 else{
-                    console.log('error ', error)
+                    console.log('error ', error);
                 }
             }
-
         }
         else{
-            alert('Password does not match')
+            alert('Password does not match');
         }
+
         resetFormFields();
     }
+
     return (
         <div className="sign-up-container">
             <h2>Don't have an account yet?</h2>
@@ -61,8 +65,8 @@ const SignUp = () =>{
                     required
                     value={email}
                     name="email"
-                    onChange={handleChange}
-                ></FormInput>
+                    onChange={handleChange}>
+                </FormInput>
    
                 <FormInput
                     label="Password"
@@ -70,9 +74,8 @@ const SignUp = () =>{
                     required
                     value={password}
                     name="password"
-                    onChange={handleChange}
-                ></FormInput>
-
+                    onChange={handleChange}>
+                </FormInput>
 
                 <FormInput
                     label="Confirm Password"
@@ -80,8 +83,8 @@ const SignUp = () =>{
                     required
                     value={confirmPassword}
                     name="confirmPassword"
-                    onChange={handleChange}
-                ></FormInput>
+                    onChange={handleChange}>
+                </FormInput>
 
                 <div className="buttons-container">
                     <Button type="submit">Sign Up</Button>

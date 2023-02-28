@@ -10,7 +10,6 @@ const CartItem = ({item}) =>{
                <p>{name}</p>
                <p>{quantity} X £{price}</p>
             </div>
-
         </div>
     )
 }

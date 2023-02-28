@@ -1,8 +1,4 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -13,7 +9,6 @@ import {
     onAuthStateChanged,
     signOut,
 } from 'firebase/auth';
-
 import {
     getFirestore, 
     doc, 
@@ -25,7 +20,7 @@ import {
     getDocs,
 
 } from 'firebase/firestore';
-// Your web app's Firebase configuration
+
 const firebaseConfig = {
   apiKey: "AIzaSyD-ksVsZu8DgS_PNmYsyXLW0zhNP3fHZas",
   authDomain: "plant-store-db-fbb3e.firebaseapp.com",
@@ -49,7 +44,6 @@ googleProvider.setCustomParameters({
 
 export const signInWithGoogle = () => signInWithPopup(auth, googleProvider)
 
-
 //used to populate product db for 
 export const addCollectionAndDocuments = async(collectionKey, ObjectsToAdd)=>{
     const collectionRef = collection(db, collectionKey);
@@ -68,13 +62,14 @@ export const getCollectionAndDocuments = async() =>{
     const q = query(collectionRef);
 
     const querySnapshot = await getDocs(q);
+      return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 
-    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-        const {title, items} = docSnapshot.data();
-        acc[title.toLowerCase()] = items;
-        return acc;
-    }, {})
-    return categoryMap;
+    // const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    //     const {title, items} = docSnapshot.data();
+    //     acc[title.toLowerCase()] = items;
+    //     return acc;
+    // }, {})
+    // return categoryMap;
 }
 
 export const CreateAuthUserWithEmailAndPassword = async( email, password) => {
@@ -92,11 +87,9 @@ export const SignAuthUserWithEmailAndPassword = async (email, password) => {
     
 }
 export const createUserDocumentFromAuth = async (userAuth) =>{
-    console.log(userAuth);
-    
+   
     const userRef = doc(db, 'users', userAuth.uid);
     const userSnapshot = await getDoc(userRef);
-    console.log(userSnapshot)
     if(!userSnapshot.exists()){
         const{email} = userAuth;
         const createdAt = new Date();

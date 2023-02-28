@@ -11,13 +11,11 @@
     .image-container{
         width: 30%;
         height: 100%;
-
         img{
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
     }
 
     .checkout-item-details{
@@ -38,8 +36,6 @@
             justify-content: center;
             font-size: 30px;
         }
-
-
         span{
             cursor: pointer;
             font-size: 30px;
@@ -62,6 +58,5 @@
             display: flex;
             justify-content: center;
         }
-
     }
 }
